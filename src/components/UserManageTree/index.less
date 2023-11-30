@@ -1,0 +1,91 @@
+.organationContain {
+    width: 304px;
+    border-right: 1px solid rgba(233, 233, 233, 1);
+    height: 100%;
+    .title {
+      height: 51px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.0900); 
+      line-height: 51px;
+      font-weight: 500;
+      font-size: 16px;
+      padding-left: 24px;
+      cursor: pointer;
+    }
+    .searchContain {
+      padding-left: 24px;
+      height: calc(100% - 51px);
+      .nodeName {
+        width: 110px;
+        overflow: hidden; 
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .search {
+        width: 258px;
+        margin-right: 18px; 
+        padding-left: 4px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.0900);
+      }
+      .searchTree {
+        margin-top: 15px;
+        max-height: calc(100% - 75px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        :global {
+          .ant-tree-list {
+            .ant-tree-list-holder {
+              .ant-tree-treenode {
+                &:hover {
+                  background-color: rgba(25,118,210,0.08);
+                }
+                width: 100%;
+                // border-bottom: 1px solid rgba(0, 0, 0, 0.0900);
+                .ant-tree-switcher {
+                  line-height: 40px;
+                }
+                .ant-tree-node-content-wrapper {
+                  display: flex;
+                  align-items: center;
+                  &:hover {
+                    background-color: transparent;
+                    color: #1976D2;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .nodeContentWrapper {
+          margin-left: 6px;
+          width: 200px;
+          display: flex;
+          align-items: center;
+          height: 40px;
+          justify-content: space-between;
+          .title {
+        
+          }
+        }
+        .handleBtn {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+           .add {
+              margin-right: 7px;
+              color: rgba(25,118,210,0.85);
+           }
+           .separate {
+              color: rgba(16,38,58,0.15);
+            }
+           .more {
+              margin-left: 7px;
+              color: rgba(25,118,210,0.85);
+              // margin-right: 18px;
+           }
+        }
+      }
+    }
+  }

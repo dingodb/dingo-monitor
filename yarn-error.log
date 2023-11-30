@@ -1,0 +1,67 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add zet-charts
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/chenglong/myJava/maven/apache-maven-3.6.0/bin:/Users/chenglong/myJava/maven/apache-maven-3.6.0/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.14.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://172.20.10.193:8081/repository/zetyunnpm-group/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.0.0-alpha.138.tgz: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:696:66)
+      at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:802:124)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:67058:16)
+      at Request.emit (node:events:520:28)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/lib/node_modules/yarn/lib/cli.js:141539:10)
+      at ClientRequest.emit (node:events:520:28)
+      at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)
+      at HTTPParser.execute (<anonymous>)
+      at Socket.socketOnData (node:_http_client:482:22)
+
+npm manifest: 
+  {
+    "private": true,
+    "author": "chenglong08 <chenglong08@58.com>",
+    "scripts": {
+      "dev": "max dev",
+      "build": "max build",
+      "format": "prettier --cache --write .",
+      "prepare": "husky install",
+      "postinstall": "max setup",
+      "setup": "max setup",
+      "start": "npm run dev"
+    },
+    "dependencies": {
+      "@ant-design/icons": "^5.2.6",
+      "@ant-design/pro-components": "^2.6.42",
+      "@antv/g6": "^4.8.23",
+      "@umijs/max": "^4.0.88",
+      "antd": "^5.11.2",
+      "axios": "^1.6.2",
+      "use-immer": "^0.9.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.2.37",
+      "@types/react-dom": "^18.2.15",
+      "husky": "^8.0.3",
+      "lint-staged": "^15.1.0",
+      "prettier": "^3.1.0",
+      "prettier-plugin-organize-imports": "^3.2.4",
+      "prettier-plugin-packagejson": "^2.4.6",
+      "typescript": "^5.2.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

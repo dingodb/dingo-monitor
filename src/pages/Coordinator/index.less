@@ -1,0 +1,103 @@
+.coordinatorContainer {
+    position: relative;
+    height: 100%;
+}
+.convasBg {
+    position: absolute;
+    width: 960px;
+    height: 960px;
+    transform: translateY(-50%);
+    left: 0;
+    top: 50%;
+    z-index: 0;
+    background: url(~@/assets/canvas-bg.png) center / 100% no-repeat;
+}
+.coordinatorCanvas {
+    transform: translateY(-50%);
+    left: 0;
+    top: 50%;
+    position: absolute;
+    z-index: 10;
+}
+.hostAddress {
+    > span {
+        &:first-child {
+            font-size: 14px;
+            font-family: Source Han Sans CN, Source Han Sans CN;
+            font-weight: 400;
+            color: rgba(0,0,0,0.45);
+        }
+    }
+}
+.title {
+    font-size: 16px;
+    font-family: Source Han Sans CN, Source Han Sans CN;
+    font-weight: bold;
+    color: rgba(0,0,0,0.88);
+    padding: 10px 0;
+}
+.pgocessContainer {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+.heapUsageContainer {
+    padding-top: 20px;
+}
+.resourceContainer, .heapUsageContainer {
+    .regionSpan {
+        font-size: 14px;
+        font-family: Source Han Sans CN, Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(0,0,0,0.45); 
+        margin-bottom: 8px;
+    }
+    .regionContent {
+        font-size: 16px;
+        font-family: Source Han Sans CN, Source Han Sans CN;
+        font-weight: bold;
+        color: rgba(0,0,0,0.88);
+    }
+    .resourceContent {
+        display: flex;
+        justify-content: space-around;
+        .resourceItem {
+            width: 420px;
+            zoom: 0.4;
+            :global {
+                canvas {
+                    margin:0 auto;
+                    width: 150px;
+                }
+            }
+        }
+    }
+}
+.diskUsageContainer {
+    .diskUsageContent {
+        display: flex;
+        & > .diskUsageItem {
+            flex: 1;
+            margin-right: 16px;
+            height: 68px;
+            background: rgba(0,0,0,0.02);
+            border-radius: 4px 4px 4px 4px;
+            padding: 8px 16px;
+            .diskUsageUrl {
+                font-size: 14px;
+                font-family: Source Han Sans CN, Source Han Sans CN;
+                font-weight: bold;
+                color: rgba(0,0,0,0.88);
+                margin-bottom: 10px;
+            }
+            .diskUsageUsage {
+                .usageLabel {
+                    font-size: 14px;
+                    font-family: Source Han Sans CN, Source Han Sans CN;
+                    font-weight: 400;
+                    color: rgba(0,0,0,0.45);
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
