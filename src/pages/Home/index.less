@@ -1,0 +1,115 @@
+.container {
+  padding-top: 80px;
+}
+:global {
+  #root {
+    height: 100%;
+  }
+}
+.homeWrapper {
+  height: 100%;
+  background-color: #fff;
+  .homeContainer {
+    display: flex;
+    height: 100%;
+    .treeMenu {
+      width: 310px;
+    }
+    .tableDetail {
+      flex: 1;
+      padding: 20px;
+      background: #F5F5F5;
+      overflow-y: auto;
+      .tableInfo {
+        background-color: #fff;
+        padding: 24px 48px;
+        .tableInfoDetail {
+          display: flex;
+          margin-bottom: 24px;
+          .infoImg {
+            width: 40px;
+            height: 40px;
+          }
+          .infoContent {
+            flex: 1;
+            margin-left: 24px;
+            .infoTitle {
+              font-size: 30px;
+              font-family: Source Han Sans CN, Source Han Sans CN;
+              font-weight: bold;
+              color: rgba(0,0,0,0.88);
+            }
+            .infoID {
+              margin-top: 8px;
+              font-size: 16px;
+              font-family: Source Han Sans CN, Source Han Sans CN;
+              font-weight: 400;
+              color: rgba(0,0,0,0.88);
+            }
+          }
+          .partionRegions {
+            .partion, .memory {
+              margin-right: 64px;
+            }
+            .partion, .regions, .memory {
+              display: inline-block;
+              .title {
+                font-size: 14px;
+                font-family: Source Han Sans CN, Source Han Sans CN;
+                font-weight: 400;
+                color: rgba(0,0,0,0.45);
+              }
+              .num {
+                margin-top: 10px;
+                font-size: 24px;
+                font-family: Source Han Sans CN, Source Han Sans CN;
+                font-weight: bold;
+                color: rgba(0,0,0,0.88);
+              }
+            }
+          }
+        }
+      }
+      .tableContent {
+        padding: 28px 48px;
+        background-color: #fff;
+      }
+    }
+  }
+}
+.drawerContainer {
+  :global {
+    .ant-col {
+      padding: 13px 10px;
+    }
+  }
+  .regionKey {
+    font-size: 14px;
+    font-family: Source Han Sans CN, Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    height: 22px;
+    margin-top: 26px;
+    margin-right: 10px;
+  }
+  .regionValue {
+    height: 22px;
+    font-size: 14px;
+    font-family: Source Han Sans CN, Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(0,0,0,0.88);
+  }
+}
+.regionsFollowerContainer {
+  .followerItem {
+    padding: 15px 12px;
+  }
+}
+.flollowersTitle {
+  height: 24px;
+  font-size: 16px;
+  font-family: Source Han Sans CN, Source Han Sans CN;
+  font-weight: bold;
+  color: rgba(0,0,0,0.88);
+  margin-top: 10px;
+}
