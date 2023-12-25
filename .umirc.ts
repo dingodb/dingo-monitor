@@ -21,6 +21,11 @@ export default defineConfig({
       path: '/coordinator',
       component: './Coordinator',
     },
+    {
+      name: 'regions',
+      path: '/regionsList',
+      component: './RegionsList',
+    },
   ],
   npmClient: 'pnpm',
   proxy: {
@@ -29,6 +34,5 @@ export default defineConfig({
       changeOrigin: true,
       pathRewrite: { '^/fetchApi': '/' },
     },
-  }
+  },
 });
-

@@ -1,5 +1,6 @@
 .organationContain {
-    width: 304px;
+    // width: 304px;
+    width: 100%;
     border-right: 1px solid rgba(233, 233, 233, 1);
     height: 100%;
     .title {
@@ -13,6 +14,7 @@
     }
     .searchContain {
       padding-left: 24px;
+      padding-right: 24px;
       height: calc(100% - 51px);
       .nodeName {
         width: 110px;
@@ -27,7 +29,7 @@
         height: 56px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.0900);
+        // border-bottom: 1px solid rgba(0, 0, 0, 0.0900);
       }
       .searchTree {
         margin-top: 15px;
@@ -37,9 +39,15 @@
         :global {
           .ant-tree-list {
             .ant-tree-list-holder {
+              .ant-tree-treenode-selected{
+                .ant-tree-node-content-wrapper {
+                  background-color: #E6F4FF;
+                  color: #1677FF;
+                }
+              }
               .ant-tree-treenode {
                 &:hover {
-                  background-color: rgba(25,118,210,0.08);
+                  // background-color: rgba(25,118,210,0.08);
                 }
                 width: 100%;
                 // border-bottom: 1px solid rgba(0, 0, 0, 0.0900);
@@ -50,8 +58,8 @@
                   display: flex;
                   align-items: center;
                   &:hover {
-                    background-color: transparent;
-                    color: #1976D2;
+                    // background-color: transparent;
+                    // color: #1976D2;
                   }
                 }
               }

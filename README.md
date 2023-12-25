@@ -16,11 +16,11 @@ npm install -g pnpm
 3.找到项目目录dingodb-web
 安装依赖包
 ```
-pnpm install
+yarn
 ```
 运行项目
 ```
-pnpm start
+yarn dev
 ```
 4.访问 http://localhost:8000
 ```
@@ -32,7 +32,7 @@ http://localhost:8000/home
 
 5.打包
 ```
- pnpm run build
+ yarn run build
 ```
 6.找到dist文件夹放入nginx
 
