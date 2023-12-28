@@ -88,7 +88,7 @@ const HomePage = () => {
       dataIndex: 'leader',
       width: 200,
       title: 'Leader',
-      render(text,record) {
+      render(text, record) {
         return [text].map((ite) => (
           <Button type="link" onClick={goFollowerLink.bind(null, ite)}>{ite}</Button>
         ))
@@ -99,7 +99,7 @@ const HomePage = () => {
       width: 200,
       title: 'follower',
       render(text, record) {
-        let copyText = text.slice(1,text.length - 1);
+        let copyText = text.slice(1, text.length - 1);
         return copyText.split(',').map((ite) => (
           <Button type="link" onClick={goFollowerLink.bind(null, ite.trim())}>{ite.trim()}</Button>
         ))
@@ -117,7 +117,7 @@ const HomePage = () => {
     },
   ]
   useEffect(() => {
-    if(detail.activeKey === 'Regions') {
+    if (detail.activeKey === 'Regions') {
       getRegionsDetailList();
     }
   }, [detail.activeKey])
@@ -129,7 +129,7 @@ const HomePage = () => {
   const getRegionsDetailList = async () => {
     console.log('detail-------', detail);
     const { schema, table, activeType } = detail;
-    if(activeType === 'table') {
+    if (activeType === 'table') {
       const res = await getTableRegion({ schema, table });
       setDetail((prev) => {
         prev.regionsTable = res.data;
@@ -143,7 +143,7 @@ const HomePage = () => {
   }
   const goDetail = async (record, key) => {
     console.log('goDetail-----', key)
-    if(key === 'regions') {
+    if (key === 'regions') {
       const { regionId } = record;
       const res = await queryRegion({ regionId });
       setDetail((prev) => {
@@ -152,7 +152,7 @@ const HomePage = () => {
     } else {
       const { schema, table, activeType, tableID } = detail;
       const { id } = record;
-      if(activeType === 'index') {
+      if (activeType === 'index') {
         const indexRes = await getIndexPartRegion({ schema, table, partId: id, indexId: tableID })
         setDetail((prev) => {
           prev.partionsTable = indexRes.data;
@@ -170,12 +170,12 @@ const HomePage = () => {
   }
   const handleTreeData = (data) => {
     console.log('handleTreeData-----', data);
-    if(data === 'isHome') {
+    if (data === 'isHome') {
       setDetail((prev) => {
         prev.isHome = true;
       });
     } else {
-      setDetail({...data, isHome: false})
+      setDetail({ ...data, isHome: false })
     }
   }
   const onClose = () => {
@@ -200,9 +200,9 @@ const HomePage = () => {
         </div>
         <div className={styles.tableDetail}>
           {detail.isHome ? <Coordinator /> : <>
-          <div className={styles.tableInfo}>
-            <div className={styles.tableInfoDetail}>
-                <img className={styles.infoImg} src={detail.activeType === 'table' ? tableBg : (detail.indexType === 'vector' ? vectorBg : indexBg)}/>
+            <div className={styles.tableInfo}>
+              <div className={styles.tableInfoDetail}>
+                <img className={styles.infoImg} src={detail.activeType === 'table' ? tableBg : (detail.indexType === 'vector' ? vectorBg : indexBg)} />
                 <div className={styles.infoContent}>
                   <div className={styles.infoTitle}>{detail?.name}</div>
                   <div className={styles.infoID}>{detail.activeType === 'table' ? 'TableID' : 'IndexID'}: {detail?.tableID}</div>
@@ -221,17 +221,17 @@ const HomePage = () => {
                     <div className={styles.num}>{detail?.regionsCount}</div>
                   </div>
                 </div>
+              </div>
+              <Descriptions title={false}>
+                {
+                  detail.infoColumns.length > 0 && detail.infoColumns.map((item) => <Descriptions.Item label={item.name}>{item.type}</Descriptions.Item>)
+                }
+              </Descriptions>
             </div>
-            <Descriptions title={false}>
-              {
-                detail.infoColumns.length > 0 && detail.infoColumns.map((item) => <Descriptions.Item label={item.name}>{item.type}</Descriptions.Item>)
-              }
-            </Descriptions>
-          </div>
-          <div className={styles.tableContent}>
-              <Tabs items={tabItems} activeKey={detail.activeKey} onChange={changeActiveKey} defaultActiveKey="partion"/>
-              {detail.activeKey === 'Regions' ? <Table columns={regionsColumns} dataSource={detail.regionsTable}/> : <Table columns={partionColumns} dataSource={detail.infoPartions}/>}
-          </div>
+            <div className={styles.tableContent}>
+              <Tabs items={tabItems} activeKey={detail.activeKey} onChange={changeActiveKey} defaultActiveKey="partion" />
+              {detail.activeKey === 'Regions' ? <Table columns={regionsColumns} dataSource={detail.regionsTable} /> : <Table columns={partionColumns} dataSource={detail.infoPartions} />}
+            </div>
           </>}
         </div>
       </div>
@@ -242,31 +242,37 @@ const HomePage = () => {
         onClose={onClose}
         open={detail.drawerOpen}
       >
-        { detail.activeKey === 'Regions' ? <><Row className={styles.drawerContainer}>
-              <Col span={12}>
-                <span className={styles.regionKey}>regionType:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.regionType}</span>
-              </Col>
-              <Col span={12}>
-                <span className={styles.regionKey}>createTime:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.createTime}</span>
-              </Col>
-              <Col span={12}>
-                <span className={styles.regionKey}>deleteTime:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.deleteTime}</span>
-              </Col>
-              <Col span={12}>
-                <span className={styles.regionKey}>regionState:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.regionState}</span>
-              </Col>
+        {detail.activeKey === 'Regions' ? <><Row className={styles.drawerContainer}>
+          <Col span={12}>
+            <span className={styles.regionKey}>regionType:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.regionType}</span>
+          </Col>
+          <Col span={12}>
+            <span className={styles.regionKey}>createTime:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.createTime}</span>
+          </Col>
+          <Col span={12}>
+            <span className={styles.regionKey}>deleteTime:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.deleteTime}</span>
+          </Col>
+          <Col span={12}>
+            <span className={styles.regionKey}>regionState:</span><span className={styles.regionValue}>{detail?.regionsTableDetail?.regionState}</span>
+          </Col>
         </Row>
-        <div>
-          <div className={styles.flollowersTitle}>Follower({detail?.regionsTableDetail?.followers.length})</div>
-          <div className={styles.regionsFollowerContainer}>
-            {
-              detail?.regionsTableDetail?.followers && detail?.regionsTableDetail?.followers.length > 0 && detail.regionsTableDetail.followers.map((item) => {
-                return <div className={styles.followerItem}><Button type="link" onClick={handleIPItem.bind(null, item)}>{item}</Button></div>
-              })
-            }
+          <div>
+            <div className={styles.flollowersTitle}>Leader</div>
+            <div className={styles.regionsFollowerContainer}>
+              <div className={styles.followerItem}><Button type="link" onClick={handleIPItem.bind(null, detail?.regionsTableDetail?.leader)}>{detail?.regionsTableDetail?.leader}</Button></div>
+            </div>
           </div>
-        </div>
-        </> : <Table columns={regionsColumns.slice(0,regionsColumns.length - 1)} dataSource={detail.partionsTable}/>}
+          <div>
+            <div className={styles.flollowersTitle}>Follower({detail?.regionsTableDetail?.followers.length})</div>
+            <div className={styles.regionsFollowerContainer}>
+              {
+                detail?.regionsTableDetail?.followers && detail?.regionsTableDetail?.followers.length > 0 && detail.regionsTableDetail.followers.map((item) => {
+                  return <div className={styles.followerItem}><Button type="link" onClick={handleIPItem.bind(null, item)}>{item}</Button></div>
+                })
+              }
+            </div>
+          </div>
+        </> : <Table columns={regionsColumns.slice(0, regionsColumns.length - 1)} dataSource={detail.partionsTable} />}
       </Drawer>
     </div>
   );

@@ -17,6 +17,7 @@ const UserManageTree = (props) => {
     const [isSearched, setIsSearched] = useState(false); // 是否搜索过
     const [isChinese, setIsChinese] = useState(false); // 是否是中文输入，中文输入状态不发送请求
     const [treeData, setTreeData] = useState([]); // 节点树数据
+
     useEffect(() => {
         fetchTree();
         handleTreeData('isHome');
@@ -24,7 +25,7 @@ const UserManageTree = (props) => {
     useEffect(() => {
         console.log('searchTreeValue-----')
         searchTreeValue && !isSearched && setIsSearched(true);
-        if(!isChinese) {
+        if (!isChinese) {
             setFilterTrees(recursionLoop(treeData));
         }
     }, [searchTreeValue]);
@@ -38,7 +39,7 @@ const UserManageTree = (props) => {
     const recursionLoop = (loopData) => {
         const keys = [];
         const loop = (data) => {
-            if(!data || !data.length) {
+            if (!data || !data.length) {
                 return [];
             }
             return data.map((item) => {
@@ -48,11 +49,11 @@ const UserManageTree = (props) => {
                 const afterStr = strTitle.slice(index + searchTreeValue.length);
                 let title = <span>{strTitle}</span>;
                 // 搜索高亮
-                if(index > -1 && searchTreeValue) {
+                if (index > -1 && searchTreeValue) {
                     keys.push(item.id || item.name);
                     title = <span>
-                    {beforeStr}
-                    <span style={{color: '#1677FF'}}>{searchTreeValue}</span>
+                        {beforeStr}
+                        <span style={{ color: '#1677FF' }}>{searchTreeValue}</span>
                         {afterStr}
                     </span>
                 }
@@ -65,13 +66,13 @@ const UserManageTree = (props) => {
                     id: item.id || '',
                     key: item.id || item.name,
                 }
-                if(item.type === 'table') {
-                    resObj.icon = <img src={tableBg}/>
-                } else if(item.type === 'index') {
-                    if(item.indexType === 'vector') {
-                        resObj.icon = <img src={vectorBg}/>
+                if (item.type === 'table') {
+                    resObj.icon = <img src={tableBg} />
+                } else if (item.type === 'index') {
+                    if (item.indexType === 'vector') {
+                        resObj.icon = <img src={vectorBg} />
                     } else {
-                        resObj.icon = <img src={indexBg}/>
+                        resObj.icon = <img src={indexBg} />
                     }
                 }
                 item.indexType && (resObj.indexType = item.indexType);
@@ -102,34 +103,36 @@ const UserManageTree = (props) => {
         setIsChinese(false);
     }
     const handleTreeClick = async (treeNode) => {
-        if(treeNode.type === 'table') {
+        if (treeNode.type === 'table') {
             const res = await getTableInfo({ schema: treeNode.schema, table: treeNode.title })
             const { columns, partitionsCount, regionsCount, partitions } = res.data;
-            handleTreeData({ 
-                name: treeNode.title, 
-                tableID: treeNode.id, 
-                infoColumns: columns || [], 
-                partitionsCount, 
-                regionsCount, 
-                infoPartions: partitions, 
-                schema: treeNode.schema, 
-                table: treeNode.title, 
-                activeType: treeNode.type })
-        } else if(treeNode.type === 'index') {
+            handleTreeData({
+                name: treeNode.title,
+                tableID: treeNode.id,
+                infoColumns: columns || [],
+                partitionsCount,
+                regionsCount,
+                infoPartions: partitions,
+                schema: treeNode.schema,
+                table: treeNode.title,
+                activeType: treeNode.type
+            })
+        } else if (treeNode.type === 'index') {
             const res = await getIndexInfo({ schema: treeNode.schema, table: treeNode.table, indexId: treeNode.id })
             const { columns, partitionsCount, regionsCount, partitions, memoryBytes } = res.data;
-            handleTreeData({ 
-                name: treeNode.title, 
-                tableID: treeNode.id, 
-                infoColumns: columns || [], 
-                partitionsCount, 
-                regionsCount, 
-                infoPartions: partitions, 
-                schema: treeNode.schema, 
-                table: treeNode.table, 
-                activeType: treeNode.type, 
-                memoryBytes, 
-                indexType: treeNode.indexType })
+            handleTreeData({
+                name: treeNode.title,
+                tableID: treeNode.id,
+                infoColumns: columns || [],
+                partitionsCount,
+                regionsCount,
+                infoPartions: partitions,
+                schema: treeNode.schema,
+                table: treeNode.table,
+                activeType: treeNode.type,
+                memoryBytes,
+                indexType: treeNode.indexType
+            })
         }
     }
 
@@ -138,15 +141,15 @@ const UserManageTree = (props) => {
         const treeTitle = treeNode.name;
         return (
             <>
-                <div 
-                className={styles.nodeContentWrapper}
-                onClick={handleTreeClick.bind(null, treeNode)}
+                <div
+                    className={styles.nodeContentWrapper}
+                    onClick={handleTreeClick.bind(null, treeNode)}
                 >
-                <Tooltip title={treeTitle}>
-                    <div className={styles.nodeName}>
-                        {treeTitle}
-                    </div>
-                </Tooltip>
+                    <Tooltip title={treeTitle}>
+                        <div className={styles.nodeName}>
+                            {treeTitle}
+                        </div>
+                    </Tooltip>
                 </div>
             </>
         )
@@ -157,17 +160,17 @@ const UserManageTree = (props) => {
     return (
         <div className={styles.organationContain}>
             <div className={styles.title} onClick={goHome}>
-            <HomeOutlined /><span style={{marginLeft: 15}}>首页</span>
+                <HomeOutlined /><span style={{ marginLeft: 15 }}>首页</span>
             </div>
             <div className={styles.searchContain}>
                 <div className={styles.search} >
-                    <Search 
-                    placeholder='搜索'
-                    onInput={onTreeSearch}
-                    onCompositionStart={chineseSearchStart}
-                    onCompositionEnd={chineseSearchEnd}
-                    value={searchTreeValue}
-                    debounceTime={100}/>
+                    <Search
+                        placeholder='搜索'
+                        onInput={onTreeSearch}
+                        onCompositionStart={chineseSearchStart}
+                        onCompositionEnd={chineseSearchEnd}
+                        value={searchTreeValue}
+                        debounceTime={100} />
                 </div>
                 <Tree treeData={filterTrees}
                     showIcon
