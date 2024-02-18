@@ -211,6 +211,12 @@ const Coordinator = () => {
     useEffect(() => {
         initGraph()
         fetchData()
+        let interval = setInterval(() => {
+            fetchData()
+        }, 30000)
+        return () => {
+            clearInterval(interval)
+        }
     }, [])
 
     useEffect(() => {
@@ -473,7 +479,7 @@ const Coordinator = () => {
                             lineHeight: 20
                         }
                     },
-                    "label": item.name,
+                    "label": item.name + (item.port ? `(${item.port})` : ''),
                     "size": 88,
                     "type": "circle",
                     dataType: ite,

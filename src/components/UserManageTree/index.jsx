@@ -26,7 +26,7 @@ const UserManageTree = (props) => {
         console.log('searchTreeValue-----')
         searchTreeValue && !isSearched && setIsSearched(true);
         if (!isChinese) {
-            setFilterTrees(recursionLoop(treeData));
+            setFilterTrees(filterTreeNode(recursionLoop(treeData), searchTreeValue));
         }
     }, [searchTreeValue]);
     const fetchTree = async () => {
@@ -35,6 +35,25 @@ const UserManageTree = (props) => {
         setTreeData(res.data)
         setFilterTrees(recursionLoop(res.data))
     }
+
+    const filterTreeNode = (treeDataArr, text) => {
+        let newArr = [...treeDataArr].map((item) => {
+            let children = [...item.children || []].filter((child) => {
+                const strTitle = child.title;
+                const index = strTitle.indexOf(text);
+                return index > -1;
+            });
+            return children.length > 0 ? {
+                ...item,
+                children,
+            } : null;
+        });
+        console.log('newArr-----', newArr)
+
+        return text ? newArr.filter(Boolean) : treeDataArr;
+    };
+
+
     // dfs获取tree的keys和data
     const recursionLoop = (loopData) => {
         const keys = [];
