@@ -18,29 +18,35 @@ const UserManageTree = (props) => {
     const [isChinese, setIsChinese] = useState(false); // 是否是中文输入，中文输入状态不发送请求
     const [treeData, setTreeData] = useState([]); // 节点树数据
 
+
     useEffect(() => {
-        fetchTree();
+        fetchTree()
         handleTreeData('isHome');
-    }, []);
+        let interval = setInterval(() => {
+            fetchTree()
+        }, 30000)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
     useEffect(() => {
         console.log('searchTreeValue-----')
         searchTreeValue && !isSearched && setIsSearched(true);
         if (!isChinese) {
             setFilterTrees(filterTreeNode(recursionLoop(treeData), searchTreeValue));
         }
-    }, [searchTreeValue]);
+    }, [searchTreeValue, treeData]);
     const fetchTree = async () => {
         const res = await queryTree();
         console.log('fetch-----', res);
         setTreeData(res.data)
-        setFilterTrees(recursionLoop(res.data))
     }
 
     const filterTreeNode = (treeDataArr, text) => {
         let newArr = [...treeDataArr].map((item) => {
             let children = [...item.children || []].filter((child) => {
-                const strTitle = child.title;
-                const index = strTitle.indexOf(text);
+                const strTitle = child.title.toLowerCase();
+                const index = strTitle.indexOf(text.toLowerCase());
                 return index > -1;
             });
             return children.length > 0 ? {
@@ -56,14 +62,14 @@ const UserManageTree = (props) => {
 
     // dfs获取tree的keys和data
     const recursionLoop = (loopData) => {
-        const keys = [];
+        const keys = [...expandedKeys];
         const loop = (data) => {
             if (!data || !data.length) {
                 return [];
             }
             return data.map((item) => {
                 const strTitle = item.name; // 部门或者用户名称
-                const index = strTitle.indexOf(searchTreeValue);
+                const index = strTitle.toLowerCase().indexOf(searchTreeValue.toLowerCase());
                 const beforeStr = strTitle.substring(0, index);
                 const afterStr = strTitle.slice(index + searchTreeValue.length);
                 let title = <span>{strTitle}</span>;
@@ -72,7 +78,7 @@ const UserManageTree = (props) => {
                     keys.push(item.id || item.name);
                     title = <span>
                         {beforeStr}
-                        <span style={{ color: '#1677FF' }}>{searchTreeValue}</span>
+                        <span style={{ color: '#1677FF' }}>{searchTreeValue.toUpperCase()}</span>
                         {afterStr}
                     </span>
                 }
