@@ -170,7 +170,7 @@ const UserManageTree = (props) => {
                     className={styles.nodeContentWrapper}
                     onClick={handleTreeClick.bind(null, treeNode)}
                 >
-                    <Tooltip title={treeTitle}>
+                    <Tooltip title={treeTitle} placement='right'>
                         <div className={styles.nodeName}>
                             {treeTitle}
                         </div>

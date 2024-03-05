@@ -452,6 +452,10 @@ const Coordinator = () => {
     const fetchData = async () => {
         const res = await queryResponseList();
         const copyData = res.data;
+        let newResponseData = {
+            nodes: [...originResponseData.nodes],
+            edges: [...originResponseData.edges]
+        }
         Object.keys(copyData).forEach((ite) => {
             const filterNodes = originResponseData.nodes.filter((it) => (it.id === ite))
             if (filterNodes.length > 0 && !filterNodes[0].isComputed) {
@@ -459,7 +463,7 @@ const Coordinator = () => {
                 filterNodes[0].isComputed = true;
             }
             copyData[ite].forEach((item) => {
-                originResponseData.nodes.push({
+                newResponseData.nodes.push({
                     style: {
                         fill: "#fff",
                         lineWidth: 1,
@@ -486,7 +490,7 @@ const Coordinator = () => {
                     ...item,
                     id: item.name,
                 })
-                originResponseData.edges.push({
+                newResponseData.edges.push({
                     source: ite,
                     target: item.name,
                     value: 1,
@@ -497,7 +501,7 @@ const Coordinator = () => {
                 })
             })
         })
-        setResponseData({ ...originResponseData })
+        setResponseData({ ...newResponseData })
     }
     const onClose = () => {
         setVisible(false)
