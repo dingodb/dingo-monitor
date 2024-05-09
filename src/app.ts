@@ -1,3 +1,8 @@
+
+import { CookieUse } from '@/utils';
+const { getCookie, setCookie } = CookieUse();
+import { history } from "umi";
+
 // 运行时配置
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
@@ -14,3 +19,15 @@ export async function getInitialState(): Promise<{ name: string }> {
 //     },
 //   };
 // };
+
+export async function render(oldRender: any) {
+  console.log('render');
+  let hash = window.location.hash;
+  if (getCookie('dingo_login_token_cookie') || ['login'].filter(item => hash.indexOf(item) > -1).length) {
+    console.log('access')
+    oldRender();
+  } else {
+    history.push('/login');
+    oldRender();
+  }
+}

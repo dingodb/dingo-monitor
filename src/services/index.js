@@ -1,4 +1,30 @@
 import axios from 'axios';
+import { request } from 'umi';
+
+export async function login(user, password) {
+  return request('/fetchApi/monitor/api/login', {
+    method: 'GET',
+    params: {
+      user,
+      password
+    }
+  });
+}
+export async function getTopSql() {
+  return request('/fetchApi/monitor/api/queryTopSql');
+}
+export async function getSqlStmt() {
+  return request('/fetchApi/monitor/api/queryStmt');
+}
+export async function getLogs() {
+  return request('/fetchApi/monitor/api/log');
+}
+export async function getEvents() {
+  return request('/fetchApi/monitor/api/event');
+}
+
+
+
 export async function queryTree() {
   const res = await axios.get('/fetchApi/monitor/api/navigation');
   return res;

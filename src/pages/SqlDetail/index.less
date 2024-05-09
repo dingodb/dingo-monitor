@@ -1,0 +1,220 @@
+.textEllipsisCode{
+  code{
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.rect_modal{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .title{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 500;
+    svg{
+      cursor: pointer;
+    }
+  }
+  .content{
+    background-color: #f0f0f0;
+    flex: 1;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    padding-top: 24px;
+    .rect_card{
+      width: fit-content;
+      min-width: 200px;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .card_title{
+        background-color: rgb(255, 245, 235);
+        width: 200px;
+        padding: 12px;
+        font-size: 16px;
+        line-height: 28px;
+      }
+      .card_content{
+        width: 200px;
+        background-color: white;
+        padding: 12px;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .card_extra{
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .extra_line_box{
+          cursor: pointer;
+          // width: 50%;
+          background-color: white;
+          padding: 2px 20px;
+          border-radius: 4px;
+          margin-bottom: 12px;
+        }
+        .extra_content{
+          display: flex;
+          gap: 12px;
+          .card_extra_item{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            .top_line{
+              // height: 20px;
+              // width: 2px;
+              // background-color: #ddd;
+              // margin-bottom: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.SQLDetail_page{
+  overflow-y: scroll;
+  .copyInfo{
+    margin-bottom: 12px;
+    margin-top: 12px;
+    padding: 12px;
+    .btns{
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      .name{
+        color: #999;
+      }
+      .btn{
+        color: #0ca6f2;
+        cursor: pointer;
+      }
+    }
+    .data{
+      font-size: 18px;
+      line-height: 32px;
+    }
+  }
+  .treeTable{
+    display: flex;
+    flex-direction: column;
+    .treeTableItem{
+      border-bottom: 1px solid #f0f0f0;
+      padding: 12px;
+      font-size: 16px;
+    }
+  }
+  .ant-tabs-tab-active{
+    .ant-tabs-tab-btn{
+      color: #0ca6f2 !important;
+    }
+  }
+  .rect{
+    height: 300px;
+    .scale{
+      // width: 400px;
+      cursor: pointer;
+      // height: 100px;
+      // pointer-events: none;
+      overflow-y: scroll;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.3);
+      transform-origin: left top;
+      transition: .3s;
+      &:hover{
+        box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.1);
+      }
+  
+    }
+  }
+  .rect_card{
+    width: fit-content;
+    min-width: 200px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .card_title{
+      background-color: rgb(255, 245, 235);
+      width: 200px;
+      padding: 12px;
+      font-size: 16px;
+      line-height: 28px;
+    }
+    .card_content{
+      width: 200px;
+      background-color: white;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .card_extra{
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .extra_line_box{
+        // width: 50%;
+        background-color: white;
+        padding: 2px 20px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      .extra_content{
+        display: flex;
+        gap: 12px;
+        .card_extra_item{
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          .top_line{
+            // height: 20px;
+            // width: 2px;
+            // background-color: #ddd;
+            // margin-bottom: 12px;
+          }
+        }
+      }
+    }
+  }
+  .baseInfo{
+    display: flex;
+    flex-direction: column;
+    .info_item{
+      display: flex;
+      border-bottom: 1px solid #f0f0f0;
+      line-height: 32px;
+      font-size: 16px;
+      padding: 8px;
+      .name{
+        width: 300px;
+        color: #666;
+      }
+      .value{
+        flex: 1;
+        color: #333;
+      }
+    }
+  }
+}

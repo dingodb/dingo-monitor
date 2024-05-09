@@ -9,7 +9,7 @@ import UserManageTree from '@/components/UserManageTree'
 import Coordinator from '../Coordinator'
 import { fileSize } from '@/utils'
 import { getPartRegion, getTableRegion, queryRegion, getIndexRegion, getIndexPartRegion } from '@/services';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 const tabItems = [
   {
     label: 'Partitions',
@@ -22,6 +22,7 @@ const tabItems = [
 ]
 const HomePage = () => {
   const { name } = useModel('global');
+  const [showHistory, setShowHistory] = useState(false)
   const [detail, setDetail] = useImmer({
     activeType: 'table',
     infoColumns: [],
@@ -195,8 +196,14 @@ const HomePage = () => {
   return (
     <div className={styles.homeWrapper}>
       <div className={styles.homeContainer}>
+        {/* <div className={`${styles.treeMenuClose}  ${showHistory ? styles.treeMenu : ''}`}> */}
         <div className={styles.treeMenu}>
-          <UserManageTree handleTreeData={handleTreeData} />
+          <div className={`${styles.treeBox}  ${showHistory ? styles.treeBoxShow : ''}`}>
+            <UserManageTree handleTreeData={handleTreeData} />
+          </div>
+          <div className={styles.slideBtn} onClick={() => setShowHistory(!showHistory)}>
+            <img src={require(`@/assets/${showHistory ? 'left' : 'right'}.png`)} alt="" />
+          </div>
         </div>
         <div className={styles.tableDetail}>
           {detail.isHome ? <Coordinator /> : <>

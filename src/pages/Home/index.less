@@ -13,7 +13,39 @@
     display: flex;
     height: 100%;
     .treeMenu {
-      width: 310px;
+      // width: 310px !important;
+      position: relative;
+    }
+    // .treeMenuClose{
+    //   position: relative;
+    // }
+    .treeBox{
+      width: 0px;
+      transition: .3s;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .treeBoxShow{
+      width: 310px !important;
+    }
+
+
+    .slideBtn{
+      position: absolute;
+      z-index: 2;
+      right: 0px;
+      top: 50%;
+      border: 1px solid var(--activeMenuColor);
+      border-radius: 6px;
+      padding: 10px 1px;
+      transform: translate(calc(100% + 10px));
+      cursor: pointer;
+      background-color:  rgba(255, 255, 255, 0.8);
+      img{
+        display: block;
+        width: 24px;
+      }
     }
     .tableDetail {
       flex: 1;
