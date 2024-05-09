@@ -1,4 +1,5 @@
 import { defineConfig } from '@umijs/max';
+import Routes from './config/route';
 
 export default defineConfig({
   antd: {},
@@ -6,28 +7,9 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
-  routes: [
-    {
-      path: '/',
-      redirect: '/home',
-    },
-    {
-      name: '首页',
-      path: '/home',
-      component: './Home',
-    },
-    {
-      name: '拓扑',
-      path: '/coordinator',
-      component: './Coordinator',
-    },
-    {
-      name: 'regions',
-      path: '/regionsList',
-      component: './RegionsList',
-    },
-  ],
+  routes: Routes,
   npmClient: 'pnpm',
+  history: { type: "hash" },
   proxy: {
     '/fetchApi': {
       target: 'http://172.20.3.93:13001/',

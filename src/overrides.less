@@ -1,0 +1,63 @@
+.basePage{
+  padding: 24px;
+  box-sizing: border-box;
+  height: 100%;
+  .baseTitle{
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.code_tooltip{
+  code {
+    white-space: pre-wrap;
+    // background-color: #1e1e1e;
+    color: #abb2bf;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 400;
+    line-height: 32px;
+    font-size: 18px;
+    .hljs-keyword {
+      color: #c678dd;
+    }
+    .hljs-title {
+      color: #dcdcaa;
+    }
+    .hljs-string {
+      color: #690;
+    }
+    .hljs-built_in {
+      color: #dcdcaa;
+    }
+    .hljs-type {
+      color: #4db9f4;
+    }
+    .hljs-params {
+      color: #9cdcfe;
+    }
+    .hljs-variable {
+      color: #4fc1ff;
+    }
+    .hljs-number {
+      color: #b5cea8;
+    }
+    .hljs-operator {
+      color: #61aeee;
+    }
+    .hljs-comment {
+      color: #690;
+    }
+  }
+}
+//溢出隐藏
+.textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
