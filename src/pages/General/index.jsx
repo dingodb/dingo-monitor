@@ -6,10 +6,12 @@ export default (props) => {
     height: '100%',
     border: 'none',
   }
+  const { hostname } = window.location;
+  // {`http://172.20.3.93:3000/d/Bm4sOIfSz/sql_metrics?orgId=1&kiosk`}
 
   return (
     <div className="basePage framePage" style={{ padding: 0 }}>
-      <iframe src='http://172.20.3.93:3000/d/Bm4sOIfSz/sql_metrics?orgId=1&kiosk' className='system_iframe' style={system_iframe_style} />
+      <iframe src={`http://${hostname}:15000/d/Bm4sOIfSz/sql_metrics?orgId=1&kiosk`} className='system_iframe' style={system_iframe_style} />
     </div>
   )
 }
