@@ -92,7 +92,7 @@ export default (props) => {
     <div className='basePage SQLList_page'>
       <div className="baseTitle">SQL 语句分析  <Button type='primary' icon={<ReloadOutlined />} onClick={init}>刷新</Button></div>
       <Table
-        rowKey={'id'}
+        rowKey={'indexNo'}
         onRow={(record) => ({
           onClick: e => onClick(record)
         })} columns={columns} dataSource={sqlData} pagination={{
