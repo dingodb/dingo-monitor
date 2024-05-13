@@ -509,12 +509,12 @@ const Coordinator = () => {
     const toRegionsDetail = () => {
         const { dataType, host, port } = modelItem;
         // history.push('/regionsList', { dataType, host, port })
-        window.open(`/regionsList?dataType=${dataType}&host=${host}&port=${port}`)
+        window.open(`/#/regionsList?dataType=${dataType}&host=${host}&port=${port}`)
     }
     const toLeaderRegionsDetail = () => {
         const { id } = modelItem;
         // history.push('/regionsList', { dataType, host, port })
-        window.open(`/regionsList?id=${id}`)
+        window.open(`/#/regionsList?id=${id}`)
     }
     return <div className={styles.coordinatorContainer}>
         {/* <div className={styles.convasBg}></div> */}
@@ -561,7 +561,7 @@ const Coordinator = () => {
                                                         fontSize: '48px',
                                                         color: '#4B535E',
                                                     },
-                                                    formatter: () => parseInt(modelItem.resource[item.name] * 100) + '%',
+                                                    formatter: () => (modelItem.resource[item.name] * 100).toFixed(2) + '%',
                                                 },
                                                 content: {
                                                     style: {
