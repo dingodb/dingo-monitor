@@ -35,7 +35,7 @@ export default (props) => {
       dataIndex: 'sqlText',
       render: (text) => <a>{text}ms</a>,
       ellipsis: true,
-      width: '60%',
+      width: '50%',
       render: (text) => {
         const contentText = hljs.highlightAuto(text).value
         return <Tooltip overlayInnerStyle={{
@@ -52,6 +52,11 @@ export default (props) => {
           </pre>
         </Tooltip>
       }
+    },
+    {
+      title: 'lastSeen',
+      dataIndex: 'lastSeen',
+      width: '10%',
     },
     {
       title: '总耗时',
