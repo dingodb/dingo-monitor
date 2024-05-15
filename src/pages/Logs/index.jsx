@@ -27,7 +27,7 @@ export default (props) => {
   }
 
   return (
-    <div className='basePage log_page'>
+    <div className='basePage log_page scrollBar'>
       <div className="baseTitle">日志(last 10,000 lines)  <Button type='primary' icon={<DownloadOutlined />} onClick={download}>下载</Button></div>
       <div className="content">{logData}</div>
     </div>

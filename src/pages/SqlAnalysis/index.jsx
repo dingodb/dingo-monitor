@@ -57,6 +57,8 @@ export default (props) => {
       title: 'lastSeen',
       dataIndex: 'lastSeen',
       width: '10%',
+      sorter: (a, b) => new Date(a.lastSeen) - new Date(b.lastSeen),
+
     },
     {
       title: '总耗时',
