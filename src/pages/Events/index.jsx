@@ -4,7 +4,7 @@ import { getEvents } from '@/services'
 import { Button, Table, Tag, Tooltip } from 'antd';
 import hljs from 'highlight.js';
 import { history } from 'umi';
-import { DownloadOutlined } from '@ant-design/icons';
+import { DownloadOutlined, ReloadOutlined } from '@ant-design/icons';
 
 export default (props) => {
   const [eventData, setEventData] = useState('')
@@ -28,7 +28,11 @@ export default (props) => {
 
   return (
     <div className='basePage log_page scrollBar'>
-      <div className="baseTitle">事件(last 10,000 lines)  <Button type='primary' icon={<DownloadOutlined />} onClick={download}>下载</Button></div>
+      <div className="baseTitle">事件(last 10,000 lines)
+        <div className='gap8'>
+          <Button type='primary' icon={<ReloadOutlined />} onClick={init}>刷新</Button>
+          <Button type='primary' icon={<DownloadOutlined />} onClick={download}>下载</Button></div>
+      </div>
       <div className="content">{eventData}</div>
     </div>
   )
